@@ -1168,7 +1168,9 @@ pure elemental real(kind=real64) function date2num(d)
   integer :: year
 
   ! Convert to UTC first
-  d_utc = d % utc()
+  ! FIXME: https://github.com/wavebitscientific/datetime-fortran/issues/51
+  ! d_utc = d % utc()
+  d_utc = d
 
   ! d_utc % year must be positive:
   if(d_utc % year < 1)then
