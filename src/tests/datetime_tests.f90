@@ -1026,6 +1026,16 @@ SUBROUTINE test_datetime
                     'datetime % utc() == num2date(date2num(datetime)) (now)')
   n = n+1
 
+  a = datetime(1901,05,1)
+  tests(n) = assert(a == num2date(date2num(a)),&
+                    'datetime == num2date(date2num(datetime)) (weird bug passes)')
+  n = n+1
+
+  a = datetime(1901,05,1,3)
+  tests(n) = assert(a == num2date(date2num(a)),&
+                    'datetime == num2date(date2num(datetime)) (weird bug fails)')
+  n = n+1
+
   ! Test for overflowing month
   a = datetime(2014,11,30,1)
   tests(n) = assert(a == num2date(date2num(a)),&
