@@ -761,6 +761,11 @@ pure elemental type(datetime) function utc(self)
 
   integer :: hours,minutes,sgn
 
+  if (self % tz == 0) then
+    utc = self
+    return
+  endif
+
   hours   = int(abs(self % tz))
   minutes = nint((abs(self % tz)-hours)*60)
   sgn     = int(sign(one,self % tz))
