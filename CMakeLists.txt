@@ -24,7 +24,7 @@ endif()
 if(CMAKE_Fortran_COMPILER_ID MATCHES Intel)
   set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -assume realloc_lhs -heap-arrays -traceback -fp-model precise -fp-model source -align all")
   set(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g -C")
-  set(CMAKE_Fortran_FLAGS_RELEASE "-g3 -O2 -axCORE-AVX2 -debug all -check none -qopt-report=5 -qopt-report-annotate")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-g3 -O1 -axCORE-AVX2 -debug all -check none -qopt-report=5 -qopt-report-annotate")
 endif()
 
 # library to archive (libdatetime.a)
