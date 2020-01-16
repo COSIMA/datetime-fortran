@@ -9,7 +9,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # if build type not specified, default to release
-set(CMAKE_BUILD_TYPE "debug")
+# set(CMAKE_BUILD_TYPE "debug")
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "release")
 endif()
@@ -22,9 +22,9 @@ endif()
 
 # compiler flags for ifort
 if(CMAKE_Fortran_COMPILER_ID MATCHES Intel)
-  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -assume realloc_lhs -heap-arrays")
-  set(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g -C -traceback")
-  set(CMAKE_Fortran_FLAGS_RELEASE "-O1")
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -assume realloc_lhs -heap-arrays -traceback -fp-model precise -fp-model source -align all")
+  set(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g -C")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-g3 -O2 -axCORE-AVX2 -debug all -check none -qopt-report=5 -qopt-report-annotate")
 endif()
 
 # library to archive (libdatetime.a)
