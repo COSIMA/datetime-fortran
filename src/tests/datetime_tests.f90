@@ -1020,6 +1020,8 @@ SUBROUTINE test_datetime
                     'datetime % utc() == num2date(date2num(datetime)) (now)')
   n = n+1
 
+  ! These bugs no longer trigger newer compiler versions. See:
+  ! https://github.com/wavebitscientific/datetime-fortran/issues/51
   a = datetime(1901,05,1)
   tests(n) = assert(a == num2date(date2num(a)),&
                     'datetime == num2date(date2num(datetime)) (weird bug passes)')
